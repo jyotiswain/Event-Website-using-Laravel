@@ -14,4 +14,9 @@ class EventController extends Controller
 
         return view('event',['events' => $data]);
     }
+
+    function detail($id){
+        $data = Event::find($id);
+        return view('detail',['event'=>$data]);
+    }
 }

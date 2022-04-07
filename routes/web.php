@@ -21,3 +21,4 @@ Route::get('/login', function () {
 
 Route::post("/login",[UserController::class,'login']);
 Route::get("/",[EventController::class,'index']);
+Route::get("/detail/{id}",[EventController::class,'detail']);
