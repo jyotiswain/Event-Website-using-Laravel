@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\EventController;
+$total= EventController::savedItem();
+?>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +28,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
+        <li><a href="#">Saved Events({{$total}})</a></li>
           </ul>
         </li>
       </ul>

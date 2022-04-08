@@ -13,7 +13,11 @@
 <h4>Details: {{$event['description']}}</h4>
 <h4>Category: {{$event['category']}}</h4>
 <br><br>
+<form action="/saved_for_later" method="POST">
+    @csrf
+    <input type="hidden" name="event_id" value={{$event['id']}}>
 <button class="btn btn-primary">Save for Later</button>
+</form>
 <br><br>
 <button class="btn btn-success">Register Now!</button>
 <br><br>
