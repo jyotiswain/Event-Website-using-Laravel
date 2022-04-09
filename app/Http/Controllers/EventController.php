@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Savedevent;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -47,4 +48,33 @@ class EventController extends Controller
 $userId=Session::get('user')['id'];
 return Savedevent::where('user_id',$userId)->count();
            }
+
+           function savedEvents()
+           {
+               $userId=Session::get('user')['id'];
+$events = DB::table('savedevents')
+->join('events','savedevents.event_id','=','event_id')
+->where('savedevents.user_id',$userId)
+->select('events.*', 'savedevents.id as savedevents_id')
+->get();
+
+return view('savedevents',['events'=>$events]);
+           }
+
+           function reMove($id)
+           {
+Savedevent::destroy($id);
+return redirect('savedevents');
+           }
+
+        function registerNow()
+        {
+            $userId=Session::get('user')['id'];
+           $total = DB::table('savedevents')
+            ->join('events','savedevents.event_id','=','event_id')
+            ->where('savedevents.user_id',$userId)
+            ->sum('events.price');
+            
+            return view('registernow',['total'=>$total]); 
+        }   
 }

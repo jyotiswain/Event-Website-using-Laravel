@@ -29,7 +29,7 @@
     }
 
     img.slider-img{
-        height: 400px !important;
+        height: 600px !important;
 
     }
 
@@ -42,7 +42,7 @@
     }
 
     .trending-image{
-        height: 100px;
+        height: 200px;
 
     }
 
@@ -58,5 +58,10 @@
         height:200px;
     }
 
+    .saved-list-divider{
+        border-bottom: 1px solid #afd349;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
     </style>
 </html>

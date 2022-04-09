@@ -29,3 +29,6 @@ Route::get("/",[EventController::class,'index']);
 Route::get("/detail/{id}",[EventController::class,'detail']);
 // Route::get("search", [EventController::class,'search']);
 Route::post("saved_for_later", [EventController::class,'saveforlater']);
+Route::get("savedevents", [EventController::class,'savedEvents']);
+Route::get("remove/{id}", [EventController::class,'reMove']);
+Route::get("registernow", [EventController::class,'registerNow']);
