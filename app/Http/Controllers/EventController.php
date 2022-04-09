@@ -44,7 +44,7 @@ class EventController extends Controller
            }
           static function savedItem()
            {
-$user_id=Session::get('user')['id'];
-return Savedevent::where('user_id',$user_id)->count();
+$userId=Session::get('user')['id'];
+return Savedevent::where('user_id',$userId)->count();
            }
 }
