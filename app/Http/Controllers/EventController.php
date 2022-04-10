@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Savedevent;
+use App\Models\Registration;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -76,5 +77,35 @@ return redirect('savedevents');
             ->sum('events.price');
             
             return view('registernow',['total'=>$total]); 
-        }   
+        }  
+        
+        function registrationDone(Request $req)
+        {
+            $userId=Session::get('user')['id'];
+            $allSavedevent = Savedevent::where('user_id', $userId)->get();
+            foreach($allSavedevent as $savedevents)
+            {
+                $registration= new Registration;
+                $registration->event_id=$savedevents['event_id'];
+                $registration->user_id=$savedevents['user_id'];
+                $registration->status="Completed";
+                $registration->payment_method=$req->payment;
+                $registration->payment_status="Done";
+                $registration->save();
+                Savedevent::where('user_id', $userId)->delete();
+            }
+            $req->input();
+            return redirect('/');
+        }
+
+        function myRegistrations()
+        {
+            $userId=Session::get('user')['id'];
+            $registrations = DB::table('registrations')
+             ->join('events','registrations.event_id','=','event_id')
+             ->where('registrations.user_id',$userId)
+             ->get();
+
+             return view('myregistrations',['registrations'=>$registrations]); 
+        }
 }

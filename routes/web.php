@@ -32,3 +32,5 @@ Route::post("saved_for_later", [EventController::class,'saveforlater']);
 Route::get("savedevents", [EventController::class,'savedEvents']);
 Route::get("remove/{id}", [EventController::class,'reMove']);
 Route::get("registernow", [EventController::class,'registerNow']);
+Route::post("registrationdone", [EventController::class,'registrationDone']);
+Route::get("myregistrations", [EventController::class,'myRegistrations']);

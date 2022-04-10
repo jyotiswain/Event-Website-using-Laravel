@@ -20,12 +20,13 @@
   </table>
 
   <div>
-  <form action="/action_page.php">
+  <form action="/registrationdone" method="POST">
+    @csrf
   <div class="form-group">
     <label for="pwd">Payment Method</label><br>
-    <input type="radio" name="payment"><span>Credit/Debit Card</span><br>
-    <input type="radio" name="payment"><span>UPI</span><br>
-    <input type="radio" name="payment"><span>Net Banking</span><br>
+    <input type="radio" value="online" name="payment"><span>Credit/Debit Card</span><br>
+    <input type="radio" value="online" name="payment"><span>UPI</span><br>
+    <input type="radio" value="online" name="payment"><span>Net Banking</span><br>
   </div>
   <button type="submit" class="btn btn-default">Register Now</button>
 </form>
