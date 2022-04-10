@@ -43,6 +43,7 @@ $total= EventController::savedItem();
       </li>
       @else
       <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Sign Up</a></li>
       @endif
           
       </ul>
