@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     //
@@ -24,6 +25,13 @@ class UserController extends Controller
 
     function signup(Request $req)
     {
+
+$req->validate([
+    'name' => 'required|alpha',
+    'email' => 'required|unique:users|email',
+    'password' => 'required'
+]);
+
         $user = new User;
         $user->name=$req->name;
         $user->email=$req->email;

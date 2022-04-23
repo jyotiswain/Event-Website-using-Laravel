@@ -1,32 +1,38 @@
 @extends('master')
 @section('content')
-<div class="custom-event">
+<div class="container">
     
-<div class="col-sm-10">
-    <div class="trending-wrapper">
-        <h4>Result for Events</h4>
-        <a class="btn btn-success" href="registernow">Register Now</a><br><br>
+
+    
+        <h4>Saved Events</h4>
+        <div class="row row-cols-1 row-cols-md-2">
         @foreach($events as $item)
        
-        <div class="row searched-item saved-list-divider">
-        <div class="col-sm-3">
+        <div class="">
+        <div class="col mb-4">
+        <div class="card h-100" style="width:18rem;">
         <a href="detail/{{$item->id}}">
-                <img class="trending-image" src="{{$item->gallery}}">
+                <img class="card-img-top" src="{{$item->gallery}}">
 </a>
-        </div>
+        
 
-        <div class="col-sm-3">
+        <div class="card-body">
                 <div class="">
-                    <h2>{{$item->name}}</h2>
-                    <h5>{{$item->description}}</h5>
+                    <h2 class="card-title">{{$item->name}}</h2>
+                    <h5 class="card-text">{{$item->description}}</h5>
 </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="">
         <a href="/remove/{{$item->savedevents_id}}" class="btn btn-warning">Remove</a>
         </div>
+        </div>
+        
 </div>
+
 @endforeach
+<br>
+<a class="btn btn-success" href="registernow">Register Now</a><br><br>
 </div>
 </div>
 </div>

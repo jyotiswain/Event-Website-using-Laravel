@@ -44,6 +44,7 @@ class EventController extends Controller
             return redirect('/login');
         }
            }
+           
           static function savedItem()
            {
 $userId=Session::get('user')['id'];
@@ -54,7 +55,7 @@ return Savedevent::where('user_id',$userId)->count();
            {
                $userId=Session::get('user')['id'];
 $events = DB::table('savedevents')
-->join('events','savedevents.event_id','=','event_id')
+->join('events','savedevents.event_id','=','events.id')
 ->where('savedevents.user_id',$userId)
 ->select('events.*', 'savedevents.id as savedevents_id')
 ->get();
@@ -72,7 +73,7 @@ return redirect('savedevents');
         {
             $userId=Session::get('user')['id'];
            $total = DB::table('savedevents')
-            ->join('events','savedevents.event_id','=','event_id')
+            ->join('events','savedevents.event_id','=','events.id')
             ->where('savedevents.user_id',$userId)
             ->sum('events.price');
             
@@ -102,7 +103,7 @@ return redirect('savedevents');
         {
             $userId=Session::get('user')['id'];
             $registrations = DB::table('registrations')
-             ->join('events','registrations.event_id','=','event_id')
+             ->join('events','registrations.event_id','=','events.id')
              ->where('registrations.user_id',$userId)
              ->get();
 

@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<div class="custom-event">
+<div class="jumbotron">
     <div class="col-sm-10">
     <table class="table">
     <tbody>
@@ -9,7 +9,7 @@
         <td>Rs {{$total}}</td>
       </tr>
       <tr>
-        <td>Tax</td>
+        <td>Other Charges</td>
         <td>Rs 0</td>
       </tr>
       <tr>
@@ -28,7 +28,7 @@
     <input type="radio" value="online" name="payment"><span>UPI</span><br>
     <input type="radio" value="online" name="payment"><span>Net Banking</span><br>
   </div>
-  <button type="submit" class="btn btn-default">Register Now</button>
+  <button type="submit" class="btn btn-secondary">Register Now</button>
 </form>
   </div>
 
